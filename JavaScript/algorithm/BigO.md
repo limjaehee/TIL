@@ -108,3 +108,64 @@ function double(arr) {
 ```
 
 - newArr이란 새로운 배열에 arr 배열이 크기가 커질 수록 newArr에 들어가는 배열도 커지므로 O(n) 공간이라고 할 수 있다.
+
+### 객체의 빅오
+
+```
+- Object.keys - O(N)
+- Object.values - O(N)
+- Object.entries - O(N)
+- hasOwnProperty - O(1)
+```
+
+```jsx
+let instructor = {
+    firstName: "kelly",
+    isInstructor: true,
+    favoriteNumbers: [1,2,3,4],
+}
+
+Object.keys(instructor)
+// ['firstName', 'isInstructor', 'favoriteNumbers']
+
+Object.values(instructor)
+// ['kelly', true, Array(4)]
+
+Object.entries(instructor)
+// [Array(2), Array(2), Array(2)]
+
+instructor.hasOwnProperty("isInstructor")
+// true
+```
+
+### 배열의 빅오
+
+```
+- Insertion - It depends...
+- Removal   - It depends...
+- Searching - O(N)
+- Access    - O(1)
+```
+
+```jsx
+let names = ["Michael", 'Melissa', "Andrea"];
+
+//           Michael     Melissa    Andrea
+//              0            1         2
+```
+
+- 예를 들어 name 배열 뒤에 삽입(Insertion)하는 경우 인덱스 순서가 달라지지 않으므로 `O(1)`이다 하지만 앞에 삽입하는 경우 원래 있던 요소의 인덱스를 하나씩 밀어줘야 하기 때문에 `O(N)`이다
+- 지우는 것도 똑같다
+
+```
+- push - O(1)
+- pop - O(1)
+- shift - O(N)
+- unshift - O(N)
+- concat - O(N)
+- slice - O(N)
+- splice - O(N)
+- sort - O(N * log N)
+- forEqach/map/filter/reduce/etc. - O(N)
+
+```
