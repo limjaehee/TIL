@@ -15,18 +15,18 @@
 ```jsx
 //예제 1
 function addUpTo(n) {
-  let total = 0;
-  for (let i = 1; i <= n; i++) {
-    total += i;
-  }
-  return total;
+    let total = 0;
+    for (let i = 1; i <= n; i++) {
+        total += i;
+    }
+    return total;
 }
 ```
 
 ```jsx
 //예제 2
 function addUpTo(n) {
-  return n * (n + 1) / 2;
+    return n * (n + 1) / 2;
 }
 ```
 
@@ -46,37 +46,37 @@ function addUpTo(n) {
 ```jsx
 //O(n²) 방식
 function rintAllPairs(n) {
-	for (let i = 0; i <= n; i++) {
-    for (let j = 0; j <= n; j++) {
-	    console.log(i,j);
-	  }
-  }
+    for (let i = 0; i <= n; i++) {
+        for (let j = 0; j <= n; j++) {
+            console.log(i,j);
+        }
+    }
 }
 
 //O(n) 방식
 function addUpTo(n) {
-  let total = 0;
-  for (let i = 1; i <= n; i++) {
-    total += i;
-  }
-  return total;
+    let total = 0;
+    for (let i = 1; i <= n; i++) {
+        total += i;
+    }
+    return total;
 }
 
 function logAtLeast5(n) {
-  for (let i = 1; i <= Math.max(5, n); i++) {
-    console.log(i)
-  }
+    for (let i = 1; i <= Math.max(5, n); i++) {
+        console.log(i)
+    }
 }
 
 //O(1) 방식
 function addUpTo(n) {
-  return n * (n + 1) / 2;
+    return n * (n + 1) / 2;
 }
 
 function logAtLeast5(n) {
-  for (let i = 1; i <= Math.min(5, n); i++) {
-    console.log(i)
-  }
+    for (let i = 1; i <= Math.min(5, n); i++) {
+        console.log(i)
+    }
 }
 ```
 
@@ -86,11 +86,11 @@ function logAtLeast5(n) {
 
 ```jsx
 function sum(arr) {
-	let total = 0;
-	for (let i = 0; i <= arr.length; i++) {
-    total += arr[i];
-  }
-	return total;
+    let total = 0;
+    for (let i = 0; i <= arr.length; i++) {
+        total += arr[i];
+    }
+    return total;
 }
 ```
 
@@ -99,11 +99,11 @@ function sum(arr) {
 
 ```jsx
 function double(arr) {
-	let newArr = [];
-	for (let i = 0; i <= arr.length; i++) {
-    newArr.push(2 * arr[i]);
-  }
-	return newArr;
+    let newArr = [];
+    for (let i = 0; i <= arr.length; i++) {
+        newArr.push(2 * arr[i]);
+    }
+    return newArr;
 }
 ```
 
