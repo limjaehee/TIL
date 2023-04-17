@@ -6,3 +6,4 @@
 
 ## JavaScript
 - [Algorithm](JavaScript/algorithm)
+- [declaration](JavaScript/declaration)
