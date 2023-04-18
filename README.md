@@ -6,4 +6,5 @@
 
 ## JavaScript
 - [Algorithm](JavaScript/algorithm)
-- [declaration](JavaScript/declaration)
+- [Basic](JavaScript/basic)
+- [Declaration](JavaScript/declaration)
