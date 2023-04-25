@@ -2,14 +2,14 @@
 여러가지 코드를 서로 비교하고 성능을 평가하는 방법
 <hr>
 
-## 빅오를 사용하는 이유
+### 빅오를 사용하는 이유
 
 - 코드의 성능을 얘기할 때 정확한 전문용어를 사용하는 것이 중요하기 때문
 - 여러 접근법의 장단점을 얘기할 때도 유용함
 - 코드를 디버그 할 때 어떤 코드가 느린지 확인할 수 있음
 <hr>
 
-## 빠른 코드 계산 방법
+### 빠른 코드 계산 방법
 
 - 시간으로 계산할 경우 디바이스나 환경에 따라 다를 수 있다
 - 따라서 이런 방식은 정확하지 않고 일일이 시간을 재야 하기 때문에 함수의 연산을 더하는 방식을 사용할 수 있다.
@@ -37,7 +37,7 @@ function addUpTo(n) {
 - 계산 할 때 연산자의 정확한 갯수는 별로 중요하지 않고 **전체적인 추세**를 봐야 한다.
 <hr>
 
-## 시간복잡도
+### 시간복잡도
 
 ```
 - f(n) colude be liear (f(n) = n)
@@ -86,7 +86,7 @@ function logAtLeast5(n) {
 ![Untitled](../../assets/JavaScript/comparingBigO.png)
 <hr>
 
-## 공간복잡도
+### 공간복잡도
 
 ```jsx
 function sum(arr) {
@@ -114,7 +114,7 @@ function double(arr) {
 - newArr이란 새로운 배열에 arr 배열이 크기가 커질 수록 newArr에 들어가는 배열도 커지므로 O(n) 공간이라고 할 수 있다.
 <hr>
 
-## 객체의 빅오
+### 객체의 빅오
 
 ```
 - Object.keys - O(N)
@@ -144,7 +144,7 @@ instructor.hasOwnProperty("isInstructor")
 ```
 <hr>
 
-## 배열의 빅오
+### 배열의 빅오
 
 ```
 - Insertion - It depends...
