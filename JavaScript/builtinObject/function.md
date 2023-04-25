@@ -1,4 +1,4 @@
-## 함수
+# 함수
 ### 매게변수&인수
 
 매개변수는 함수를 정의할 때 괄호 안에 지정하는 변수입니다.
@@ -18,18 +18,20 @@ sayHi('Max');
 매개변수`name`에 대해`'Max'`는 함수의 인수입니다.
 
 인수는 복사된 값이다. 따라서 원본을 바꿔주지 않는다.
+<hr>
 
 ### 나머지 매개변수 (Rest)
 
 ```jsx
 const sumUp = (a, b, ...num) => {
-	let sum = 0;
-	for (const x of num) {
-		sum += x
-	}
-	return sum;
+    let sum = 0;
+    for (const x of num) {
+        sum += x
+    }
+    return sum;
 }
 ```
+<hr>
 
 ### 함수 이름짓기
 
@@ -41,6 +43,7 @@ const sumUp = (a, b, ...num) => {
 | create | 무언가를 생성함             |
 | check  | 무언가를 확인하고 블린값을 반환함   |
 
+<hr>
 
 ### 함수 표현식 vs 함수 선언문
 
@@ -67,6 +70,7 @@ let sum = function(a, b) {
 ```
 
 함수 표현식에서 정의 이전에 sum()을 호출하면 초기화 전에는 접근할 수 없다고 에러가 나온다.
+<hr>
 
 ### 익명함수에 이름을 적어주는 이유
 
@@ -74,19 +78,20 @@ let sum = function(a, b) {
 
 ```jsx
 startGameBtn.addEventListener('click', function() {
-	conosle.log(age);
+    conosle.log(age);
 });
 
 //age is not defined
 //at HTMLButtonElement.<anonymous>
 
 startGameBtn.addEventListener('click',  function start() {
-	conosle.log(age);
+    conosle.log(age);
 });
 
 //age is not defined
 //at HTMLButtonElement.start
 ```
+<hr>
 
 ### 콜백함수
 
@@ -102,6 +107,7 @@ introduce("홍", "길동", function(name) {
 });
 //홍길동
 ```
+<hr>
 
 ### 메서드
 

@@ -22,7 +22,7 @@
 
   `addListenerBtn`을 클릭하면 addListener()가 실행되고 `clickableBtn`을 클릭하면 printMessage()함수가 실행되는 절차를 가지고 있다.
 
-  이 때 `clickableBtn` 버튼 하나 당 하나의 결과값이 나온다.
+  이 때 `clickableBtn` 버튼 하나 당 하나의 결과값이 나온다.<br><br>
 
   이와 같이 동작하는 이유는 버튼에 이벤트 리스너를 연결하여 이전에 사용한 함수를 호출하는 경우, JavaScript는 새로운 리스너를 만드는 대신에 기존 리스너를 새로운 리스너로 교체하기 때문이다.
 

@@ -7,4 +7,5 @@
 ## JavaScript
 - [Algorithm](JavaScript/algorithm)
 - [Basic](JavaScript/basic)
+- [BuiltinObject](JavaScript/builtinObject)
 - [Declaration](JavaScript/declaration)
