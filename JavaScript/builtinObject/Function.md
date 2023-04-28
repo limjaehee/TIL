@@ -1,4 +1,23 @@
 # 함수
+
+### 함수
+
+함수는 객체이다.
+
+```jsx
+function startGame() { 
+    console.log("Game is starting...");
+}
+
+console.dir(startGame);
+```
+
+위와 같이 콘솔에 함수를 찍으면 아래처럼 키와 값이 쌍으로 되어있는 객체가 나온다. 이는 해당 함수에 포함되어있는 프로퍼티를 나타낸 것이다.
+
+ <img src = "../../assets/JavaScript/functionIsObject.jpg" width="300px">
+
+<hr>
+
 ### 매게변수&인수
 
 매개변수는 함수를 정의할 때 괄호 안에 지정하는 변수입니다.
@@ -110,6 +129,27 @@ introduce("홍", "길동", function(name) {
 <hr>
 
 ### 메서드
+
+- 객체에 함수가 저장된 것을 메서드라고 한다.
+
+    ```jsx
+    const person = {
+        name: "Max",
+        greet: function greet() {
+            console.log("Hello there!");
+        },
+    };
+    
+    person.greet();
+    ```
+
+  person객체 안에 `greet`라는 메서드가 있다.
+
+    ```jsx
+    startGameBtn.addEventListener("click", startGame);
+    ```
+
+  startGameBtn 객체 안에 `addEventListener`라는 메서드가 있다.
 
 - bind()
 
