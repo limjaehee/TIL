@@ -9,3 +9,6 @@
 - [Basic](JavaScript/basic)
 - [BuiltinObject](JavaScript/builtinObject)
 - [Declaration](JavaScript/declaration)
+- [Classes](JavaScript/classes)
+- [Expression](JavaScript/expression)
+- [Regex](JavaScript/regex)
