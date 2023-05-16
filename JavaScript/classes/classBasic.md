@@ -213,26 +213,35 @@ console.log(Rabbit.prototype)의 결과
    부모 메서드를 토대로 일부 기능만 변경하고 싶을 때, 기능을 확장하고 싶을 때 super 키워드를 사용한다.
 
     ```jsx
-    class Cat {
+    class Animal {
       constructor(name) {
         this.name = name;
       }
       speak() {
         console.log(`${this.name} makes a noise.`);
       }
+      active() {
+        return this.name
+      }
     }
     
-    class Lion extends Cat {
+    class Lion extends Animal {
       speak() {
         super.speak(); //super을 사용하지 않으면 자체 메서드가 사용된다.
         console.log(`${this.name} roars.`);
       }
+      active() {
+        return super.active() + '은 어흥'
+      }
     }
     
-    let l = new Lion('Fuzzy');
-    l.speak();
+    let Lion = new Lion('Lion');
+    Lion.speak();
     // Fuzzy makes a noise.
     // Fuzzy roars.
+   
+   Lion.active();
+   // Lion은 어흥
     ```
 
 2. 생성자 오버라이딩

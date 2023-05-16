@@ -257,10 +257,10 @@ course.printRating(); //4/5
 
 setPrototypeOf는 프로토타입을 추가하거나 새롭게 설정하고 싶을 때 사용한다.
 
-create 기능을 사용하여 프로토타입이 course인 새로운 객체를 생성할 수 있다.
+create 기능을 사용하여 프로토타입이 course인 새로운 객체를 생성할 수 있다. (프로토타입 상속)
 
 ```jsx
-let math = Object.create(course);
+let math = Object.create(course); //course는 math를 부모로 하는 새로운 객체다
 console.log(math.__proto__); //{title: 'JavaScript - Guide', rating: 4}
 console.log(math.__proto__.__proto__); //{printRating: ƒ}
 math.printRating(); //4/5
