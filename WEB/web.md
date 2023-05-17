@@ -51,7 +51,7 @@ www.amazon.com은 루트 도메인이라 부르며 amazon.com은 하위 도메�
 
 | Property | Description | Example |
 | --- | --- | --- |
-| appCodeName | 브라우저의 코드명을 반환합니다. | Mozilla’ |
+| appCodeName | 브라우저의 코드명을 반환합니다. | Mozilla |
 | appName | 브라우저의 이름을 반환합니다. | Netscape |
 | appVersion | 브라우저의 버전을 반환합니다. | 5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 |
 | cookieEnabled | 브라우저의 쿠키 사용 가능 여부를 반환합니다. | true |

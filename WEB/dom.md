@@ -16,7 +16,7 @@ template 요소는 페이지를 불러온 순간 즉시 그려지지는 않지�
 
 ```html
 <template id="tooltip">
-		<h2>Warning</h2>
+    <h2>Warning</h2>
     <p></p>
 </template>
 <div id="target">
