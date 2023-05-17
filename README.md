@@ -1,6 +1,10 @@
 # Today I Learned
     매일 배운 것을 기록합니다.
 
+## WEB
+- [DOM](WEB/dom.md)
+- [WEB](WEB/web.md)
+
 ## HTML
 - [Tag](HTML/Tag)
 
