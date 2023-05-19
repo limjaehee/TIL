@@ -4,6 +4,8 @@
 ## WEB
 - [DOM](WEB/dom.md)
 - [WEB](WEB/web.md)
+- [API](WEB/API.md)
+- [Bubbling&Capturing](WEB/bubblingAndCapturing.md)
 
 ## HTML
 - [Tag](HTML/Tag)
