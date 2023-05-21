@@ -1,8 +1,6 @@
 # 함수
 
-### 함수
-
-함수는 객체이다.
+## 함수 개념
 
 ```jsx
 function startGame() { 
@@ -12,34 +10,47 @@ function startGame() {
 console.dir(startGame);
 ```
 
-위와 같이 콘솔에 함수를 찍으면 아래처럼 키와 값이 쌍으로 되어있는 객체가 나온다. 이는 해당 함수에 포함되어있는 프로퍼티를 나타낸 것이다.
+함수는 객체이다.<br>위와 같이 콘솔에 함수를 찍으면 아래처럼 키와 값이 쌍으로 되어있는 객체가 나온다. 이는 해당 함수에 포함되어있는 프로퍼티를 나타낸 것이다.
 
  <img src = "../../assets/JavaScript/functionIsObject.jpg" width="300px">
 
-<hr>
+<br>
+<br>
+함수 네이밍
 
-### 매게변수&인수
+| get  | 값을 반환함 |
+| --- | --- |
+| show  | 무언가를 보여줌 |
+| calc  | 무언가를 계산함 |
+| create  | 무언가를 생성함 |
+| check  | 무언가를 확인하고 블린값을 반환함 |
 
-매개변수는 함수를 정의할 때 괄호 안에 지정하는 변수입니다.
+<br>
 
-이 예시에서`name`은 매개변수입니다.
+
+### ✅ 매게변수&인수
+
+매개변수는 함수를 정의할 때 괄호 안에 지정하는 변수이다.
+
+이 예시에서`name`은 매개변이다.
 
 ```jsx
 function sayHi(name) { ... }
 ```
 
-인수는 함수를 호출할 때 함수에 전달하는구체적인 값입니다.
+인수는 함수를 호출할 때 함수에 전달하는구체적인 값이다.
 
 ```jsx
 sayHi('Max');
 ```
 
-매개변수`name`에 대해`'Max'`는 함수의 인수입니다.
+매개변수`name`에 대해`'Max'`는 함수의 인수이다.
 
 인수는 복사된 값이다. 따라서 원본을 바꿔주지 않는다.
-<hr>
 
-### 나머지 매개변수 (Rest)
+<br>
+
+### ✅ 나머지 매개변수 (Rest)
 
 ```jsx
 const sumUp = (a, b, ...num) => {
@@ -50,21 +61,10 @@ const sumUp = (a, b, ...num) => {
     return sum;
 }
 ```
-<hr>
 
-### 함수 이름짓기
+<br>
 
-| 이름     | 설명                   |
-|--------|----------------------|
-| get    | 값을 반환함               |
-| show   | 무언가를 보여줌             |
-| calc   | 무언가를 계산함             |
-| create | 무언가를 생성함             |
-| check  | 무언가를 확인하고 블린값을 반환함   |
-
-<hr>
-
-### 함수 표현식 vs 함수 선언문
+### ✅ 함수 표현식 vs 함수 선언문
 
 ```jsx
 sum(1, 2) //3
@@ -89,9 +89,10 @@ let sum = function(a, b) {
 ```
 
 함수 표현식에서 정의 이전에 sum()을 호출하면 초기화 전에는 접근할 수 없다고 에러가 나온다.
-<hr>
 
-### 익명함수에 이름을 적어주는 이유
+<br>
+
+### ✅ 익명함수에 이름을 적어주는 이유
 
 이름이 없으면 함수의 오류를 찾기 어렵기 때문이다.
 
@@ -110,9 +111,10 @@ startGameBtn.addEventListener('click',  function start() {
 //age is not defined
 //at HTMLButtonElement.start
 ```
-<hr>
 
-### 콜백함수
+<br>
+
+### ✅ 콜백함수
 
 ```jsx
 function introduce (lastName, firstName, callback) {
@@ -126,9 +128,10 @@ introduce("홍", "길동", function(name) {
 });
 //홍길동
 ```
-<hr>
 
-### 메서드
+<br>
+
+### ✅ 메서드
 
 - 객체에 함수가 저장된 것을 메서드라고 한다.
 
@@ -168,3 +171,157 @@ introduce("홍", "길동", function(name) {
 
 - call
 - apply
+
+<br>
+
+## 함수의 종류
+
+### ✅ 순수 함수
+
+함수의 외부는 바꾸지 않고 동일한 입력값에 대한 출력이 항상 똑같다.
+
+```jsx
+function add(num1, num2){
+	return num1 + num2;
+}
+
+add(1,5) //6
+```
+
+<br>
+
+### ✅ 비순수 함수
+
+비순수 함수란 입력값에 대한 출력값을 예측 할 수 없는 것을 말한다.
+
+```jsx
+function addRandom(num){
+	return num + Math.random();
+}
+
+addRandom(5) //5.24589115
+```
+
+부수 효과(Sdie Effects)란 함수의 외부를 바꿔놓는 것이며 이것은 HTTP 요청일 수도 있고 데이터베이스에 저장된 데이터(외부 변수)일 수도 있다.
+
+아래는  부수 효과를 만들어내는 부수 함수 예시다.
+
+```jsx
+let previousResult = 0;
+
+function add(num1, num2){
+	const sum = num1 + num2;
+	previousResult = sum; //부수 효과
+	return sum;
+}
+
+add(5, 1) //6
+```
+
+<br>
+
+### ✅ 팩토리 함수
+
+애플리케이션의 다른 부분에서 여러 번 호출되는 어떤 함수가 있을 때 사전 설정하여 쉽게 호출할 수 있다.
+
+```jsx
+function createTaxCalculator(tax) {
+	function calculateTax(amount) {
+		return amount * tax;
+	}
+	return calculateTax;
+}
+
+const calculateVatAmount = createTaxCalculator(0.19);
+
+calculateVatAmount(100); //19
+calculateVatAmount(200); //38
+```
+
+<br>
+
+### ✅ 클로저(closure)
+
+자신을 포함하고 있는 외부함수보다 내부함수가 더 오래 유지되는 경우, 외부 함수 밖에서 내부 함수가 호출되더라도 외부함수의 지역변수에 접근할 수 있는 이런 함수를 클로저라고 한다.
+
+```jsx
+function outerFunc() {
+  var x = 10;
+  var innerFunc = function () { console.log(x); };
+  return innerFunc;
+}
+
+/**
+ *  함수 outerFunc를 호출하면 내부 함수 innerFunc가 반환된다.
+ *  그리고 함수 outerFunc의 실행 컨텍스트는 소멸한다.
+ */
+var inner = outerFunc();
+inner(); // 10
+```
+
+간단히 말하면 자신이 생성될 때의 환경을 기억하는 함수이다.
+
+JavaScript의 모든 함수는 클로저이다. 이는 환경에 정의된 변수가 닫혀있기 때문이고 이를 기억하기 떄문이다.
+
+```jsx
+let userName = 'Max';
+
+function greetUser() {
+	console.log('Hi' + userName);
+}
+
+username = 'Lisa';
+
+greetUser()
+```
+
+함수는 초기화 될 때 안에 있는 userName이라는 변수를 저장하는데 변수가 바뀌게 되면 반영이 된다.
+
+따라서 함수를 생성하고 로깅 할 때 변수의 값을 복사하지 않고 변수 그 자체에 로깅한다고 할 수 있다.
+
+**클로저의 메모리 관리**
+
+자바스크립트 엔진은 기본적으로 변수 사용량을 추적해서 변수가 어떤 함수나 어떤 곳에서도 사용된 적이 없으면 삭제한다.
+
+<br>
+
+### ✅ 그림자(Shadow)변수
+
+함수 내부와 외부에 같은 이름의 변수를 사용하는 경우 내부 함수 혹은 내부 환경은 외부 환경보다 우선시 된다.
+
+함수는 실행될 때 먼저 내부 환경을 확인하고 변수를 찾을 수 없을 때만 외부 환경을 확인한다.
+
+```jsx
+function greetUser() {
+	let name = 'Anna';
+	console.log('Hi' + Anna);
+}
+
+let name = 'Pororo';
+greetUser() //Hi Anna
+```
+
+<br>
+
+### ✅ 재귀 함수
+
+자체적으로 함수를 호출하는 재귀는 루프보다 간단하게 작성할 수 있다.
+
+```jsx
+//일밚 함수
+function powerOf(x, n) {
+	let result = 1;
+	for(let i = 0; i < n; i++) {
+		result *= x;
+	} 
+	return result;
+}
+
+//재귀 함수
+function powerOf(x, n) {
+	if(n === 1) return x;
+	return x * powerOf(x, n - 1);
+}
+
+powerOf(2, 3);
+```
