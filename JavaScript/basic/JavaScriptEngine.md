@@ -8,7 +8,7 @@
 
 ## 자바스크립트 엔진 코드 해석 순서
 
-![Untitled](../../assets/JavaScript/JavaScript_engine_order.png)
+ <img src = "../../assets/JavaScript/JavaScript_engine_order.png" width="700px">
 
 1. 브라우저가 HTML 파일을 읽어 스크립트를 감지하여 실행한다.
 2. 인터프리터가 스크립트를 로드하고 읽어들여서 가상 머신이 이해하기 쉽게 만든 바이트 코드로 변환한다.
@@ -36,14 +36,14 @@
 
 ## 자바스크립트 코드 실행 원리
 
-![Untitled](../../assets/JavaScript/code_execution.png)
+ <img src = "../../assets/JavaScript/code_execution.png" width="700px">
 
 ### ✅ **Heap**
 
 메모리가 할당이 되는 곳이며 선언한 변수, 함수가 담겨져 있다.
 
 ### ✅ **Call Stack**
- <img src = "../../assets/JavaScript/call_stack.png" width="800px">
+ <img src = "../../assets/JavaScript/call_stack.png" width="900px">
 
 코드가 실행될 때 쌓이는 곳이며 하나의 호출 스택을 사용하기 때문에 자바스크립트의 함수가 실행되는 방식을 ‘Run to Completion’이라고 부른다. 이는 하나의 함수가 실행되면 이 함수가 끝날 때까지는 다른 작업은 끼어들지 못한다.
 
@@ -81,8 +81,8 @@ greet();
 4. greet(), getName(), prompt() 순서대로 스택 맨 위에 푸쉬되어 실행한다.
 
    (스택에서는 맨 위에 있는 항목이 항상 현재 실행 중인 항목이 된다.)
-
-   ![Untitled](../../assets/JavaScript/web_call_stack.png)
+    
+     <img src = "../../assets/JavaScript/web_call_stack.png" width="600px">
 
 5. prompt()의 값을 입력하거나 취소를 누르는 등 실행이 종료되면 스택에서 방출(삭제)된다.
 
