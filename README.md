@@ -6,6 +6,7 @@
 - [WEB](WEB/web.md)
 - [API](WEB/API.md)
 - [Bubbling&Capturing](WEB/bubblingAndCapturing.md)
+- [HTTP](WEB/HTTP.md)
 
 ## HTML
 - [Tag](HTML/Tag)
