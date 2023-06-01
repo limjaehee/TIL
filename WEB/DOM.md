@@ -6,7 +6,7 @@ $0 : 크롬 개발자 도구에서 지원하는 기능으로 현재 마우스로
 
 ### ✅ Sizes & Positiions
 
-<img src="../assets/WEB/dom-size.png" width="500">
+<img src="../assets/WEB/dom_size.png" width="500">
 
 <br>
 

@@ -2,7 +2,7 @@
 
 ## URL
 
-<img src="../assets/WEB/basic-url.png">
+<img src="../assets/WEB/basic_url.png">
 
 - protocol : 컴퓨터와 서버가 통신하는데 사용되는 프로토콜
 - domain name : 사람이 읽을 수 있는 웹사이트 주소이자 웹 사이트를 식별하는 장치

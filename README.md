@@ -2,10 +2,10 @@
     매일 배운 것을 기록합니다.
 
 ## WEB
-- [DOM](WEB/dom.md)
-- [WEB](WEB/web.md)
+- [DOM](WEB/DOM.md)
+- [WEB](WEB/WEB.md)
 - [API](WEB/API.md)
-- [Bubbling&Capturing](WEB/bubblingAndCapturing.md)
+- [Bubbling&Capturing](WEB/BubblingCapturing.md)
 - [HTTP](WEB/HTTP.md)
 - [BrowserStorage](WEB/BrowserStorage.md)
 
