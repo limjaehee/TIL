@@ -8,6 +8,9 @@
 - [Bubbling&Capturing](WEB/BubblingCapturing.md)
 - [HTTP](WEB/HTTP.md)
 - [BrowserStorage](WEB/BrowserStorage.md)
+- [Deploy](WEB/Deploy.md)
+- [Securtify](WEB/Securtify.md)
+- [Testing](WEB/Testing.md)
 
 ## HTML
 - [Tag](HTML/Tag)
