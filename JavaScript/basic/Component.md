@@ -459,7 +459,76 @@ disconnectedCallback은 컴포넌트 수명이 끝나 이벤트 리스너를 제
 
 <br>
 
-### 11. 빌트인 요소 확장하기
+### 11. 사용자 정의 이벤트
+
+click, hover처럼 이벤트를 생성하고 싶을 때 사용한다.
+
+아래처럼 사용하면 모달 내애서 버튼을 클릭 할 때 외부에서 이벤트 감지를 할 수 있다.
+
+```html
+<body>
+  <uc-modal></uc-modal>
+  <script>
+    const modal = document.querySelector("uc-modal");
+
+    modal.addEventListener("confirm", () => {
+      console.log("Confirmed...");
+    });
+  </script>
+</body>
+```
+
+```jsx
+//modal.js
+class Modal extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = `
+        <div id="modal">
+            <header>
+                <slot name="title">
+                    <h1>Please Confirm Title</h1>
+                </slot>
+            </header>
+            <section id="main">
+                <slot></slot>
+            </section>
+            <section id="actions">
+                <button id="cancel-btn">Cancel</button>
+                <button id="confirm-btn">Okay</button>
+            </section>
+        </div>
+    `;
+
+    const cancelBtn = this.shadowRoot.querySelector("#cancel-btn");
+    const confirmBtn = this.shadowRoot.querySelector("#confirm-btn");
+    cancelBtn.addEventListener("click", this._cancel.bind(this));
+    confirmBtn.addEventListener("click", this._confirm.bind(this));
+  }
+
+  //이벤트 자동수신
+  _cancel(event) {
+    /**외부에서 리스닝 할 이벤트
+     * bubbles: 이벤트 버블링 여부
+     * composed: shadow DOM을 나갈지 여부
+     */
+    const cancelEvent = new Event("cancel", { bubbles: true, composed: true });
+    event.target.dispatchEvent(cancelEvent);
+  }
+
+  _confirm() {
+    const confirmEvent = new Event("confirm");
+    this.dispatchEvent(confirmEvent);
+  }
+}
+
+customElements.define("uc-modal", Modal);
+```
+
+<br>
+
+### 12. 빌트인 요소 확장하기
 
 기존 빌트인 `ex.<a>`와 같은 요소를 확장할 수도 있다.
 
@@ -487,3 +556,233 @@ HTML에서 기존 태그 사용과는 다르게 is 안에 네이밍을 적어준
 위 코드대로 실행하면 a 링크 클릭 시 Do you really want to leave? 메시지가 나타나고 취소를 누르면 event.preventDefault()를 실행해 기본 동작을 실행하지 않도록 처리된다.
 
 이처럼 사용하면 기본 빌트인 스타일과 기능을 유지할 수 있다.
+
+<br>
+
+## [예제] 모달 컴포넌트
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./modal.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <uc-modal>
+      <h1 slot="title">Please Confirm</h1>
+      <p>With your confirmation you agree to pay the full amount!</p>
+    </uc-modal>
+    <p>Please confirm your choice</p>
+    <button>Confirm</button>
+    <script>
+      const confirmBtn = document.querySelector("button");
+      const modal = document.querySelector("uc-modal");
+
+      //사용자 정의 이벤트
+      modal.addEventListener("confirm", () => {
+        console.log("Confirmed...");
+      });
+
+      modal.addEventListener("cancel", () => {
+        console.log("Cancelled...");
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        // modal.setAttribute("opened", "");
+        if (!modal.isOpen) {
+          modal.open();
+        }
+      });
+    </script>
+  </body>
+</html>
+```
+
+```jsx
+//moda.js
+class Modal extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    //외부에서 이상한 논리가 실행되는 것을 막기 위해 추가
+    this.isOpen = false;
+    this.shadowRoot.innerHTML = `
+        <style>
+            #backdrop {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.75);
+                z-index: 10;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            :host([opened]) #backdrop,
+            :host([opened]) #modal{
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            :host([opened]) #modal {
+                transform: translate(-50%, -50%);
+            }
+        
+            #modal {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                width: 50%;
+                transform: translate(-50%, -30%);
+                z-index: 100;
+                background: white;
+                border-radius: 3px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                opacity: 0;
+                pointer-events: none;
+                transition-duration: 0.3s;
+            }
+        
+            header {
+                padding: 1rem 1rem 0 1rem;
+            }
+        
+            ::slotted(h1),header h1 {
+                font-size: 1.25rem;
+                margin-bottom: 0;
+            }
+        
+            #actions {
+                border-top: 1px solid #ddd;
+                padding: 1rem;
+                display: flex;
+                justify-content: flex-end;
+            }
+        
+            #actions button {
+                margin: 0 0.25rem;
+                background: #fff;
+                border: 1px solid #ddd;
+                padding: 0.4rem 0.8rem;
+                cursor: pointer;
+                border-radius: 2px;
+            }
+
+            #actions button:hover {
+                background: #f5f5f5
+            }
+
+            #confirm-btn {
+                color: mediumblue;
+            }
+
+            #main {
+                padding: 1rem;
+            }
+        </style>
+        <div id="backdrop"></div>
+        <div id="modal">
+            <header>
+                <slot name="title">
+                    <h1>Please Confirm Title</h1>
+                </slot>
+            </header>
+            <section id="main">
+                <slot></slot>
+            </section>
+            <section id="actions">
+                <button id="cancel-btn">Cancel</button>
+                <button id="confirm-btn">Okay</button>
+            </section>
+        </div>
+    `;
+
+    const slots = this.shadowRoot.querySelectorAll("slot");
+    //Shadow DOM이 컴포넌트를 실제 DOM에 렌더링 할 때 실행
+    slots[1].addEventListener("slotchange", (event) => {
+      console.dir(slots[1].assignedNodes());
+    });
+
+    const cancelBtn = this.shadowRoot.querySelector("#cancel-btn");
+    const confirmBtn = this.shadowRoot.querySelector("#confirm-btn");
+    const backdrop = this.shadowRoot.querySelector("#backdrop");
+    cancelBtn.addEventListener("click", this._cancel.bind(this));
+    confirmBtn.addEventListener("click", this._confirm.bind(this));
+    backdrop.addEventListener("click", this._hide.bind(this));
+  }
+
+  /**아래 방법을 활용할 때
+   * 타이머 시작
+   * 일부 텍스트 변경
+   * 요소 추가 등
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (this.hasAttribute("opened")) {
+      this.isOpen = true;
+      // this.shadowRoot.querySelector("#backdrop").style.opacity = 1;
+      // this.shadowRoot.querySelector("#backdrop").style.pointerEvents = "all";
+      // this.shadowRoot.querySelector("#modal").style.opacity = 1;
+      // this.shadowRoot.querySelector("#modal").style.pointerEvents = "all";
+    } else {
+      this.isOpen = false;
+    }
+  }
+
+  static get observedAttributes() {
+    return ["opened"];
+  }
+
+  //외부에서 엑세스 가능
+  //컴포넌트의 복잡성을 추상화하고 내부에서 관리하기 위함
+  open() {
+    this.setAttribute("opened", "");
+  }
+
+  //내부에서만 쓰는 규칙 (실제로 적용은 안됨)
+  _hide() {
+    if (this.isOpen) {
+      this.removeAttribute("opened");
+      this.isOpen = false;
+    }
+  }
+
+  //이벤트 자동수신
+  _cancel(event) {
+    this._hide();
+    /**외부에서 리스닝 할 이벤트
+     * bubbles: 이벤트 버블링 여부
+     * composed: shadow DOM을 나갈지 여부
+     */
+    const cancelEvent = new Event("cancel", { bubbles: true, composed: true });
+    event.target.dispatchEvent(cancelEvent);
+  }
+
+  _confirm() {
+    this._hide();
+
+    //사용자 요소 자체가 dispatchEvent 메서드를 가지게 하는 방법
+    const confirmEvent = new Event("confirm");
+    this.dispatchEvent(confirmEvent);
+  }
+}
+
+customElements.define("uc-modal", Modal);
+```
