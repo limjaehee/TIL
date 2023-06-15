@@ -612,7 +612,7 @@ HTML에서 기존 태그 사용과는 다르게 is 안에 네이밍을 적어준
 ```
 
 ```jsx
-//moda.js
+//modal.js
 class Modal extends HTMLElement {
   constructor() {
     super();
