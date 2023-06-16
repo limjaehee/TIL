@@ -18,8 +18,8 @@
 ## JavaScript
 - [기초](JavaScript/기초)
 - [알고리즘](JavaScript/알고리즘)
-- [표준 내장 객체](JavaScript/표준%내장%객체)
-- [문과 선언문](JavaScript/문과%선언문)
+- [표준 내장 객체](JavaScript/표준%20내장%20객체)
+- [문과 선언문](JavaScript/문과%20선언문)
 - [클래스](JavaScript/클래스)
 - [표현식](JavaScript/표현식)
 - [정규식](JavaScript/정규식)
