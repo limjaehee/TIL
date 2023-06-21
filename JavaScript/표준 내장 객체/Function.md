@@ -28,38 +28,74 @@ console.dir(startGame);
 <br>
 
 
-### ✅ 매게변수&인수
+### ✅ 매게변수&인자
 
-매개변수는 함수를 정의할 때 괄호 안에 지정하는 변수이다.
+매개변수는 함수를 정의할 때 **괄호** 안에 지정하는 변수이다.
 
-이 예시에서`name`은 매개변이다.
+이 예시에서 `name`은 매개변수이다.
 
 ```jsx
 function sayHi(name) { ... }
 ```
 
-인수는 함수를 호출할 때 함수에 전달하는구체적인 값이다.
+인자는 함수를 호출할 때 함수에 전달하는 **구체적인 값**이다.
 
 ```jsx
 sayHi('Max');
 ```
 
-매개변수`name`에 대해`'Max'`는 함수의 인수이다.
+매개변수 `name` 에 대해 `'Max'` 는 함수의 인자이다..
 
-인수는 복사된 값이다. 따라서 원본을 바꿔주지 않는다.
+인수는 복사된 값이다. 따라서 **원본을 바꿔주지 않는다.**
 
 <br>
 
-### ✅ 나머지 매개변수 (Rest)
+### ✅ Default Value
+
+인자가 넘어오지 않았을 때를 대비해 기본값을 지정할 수 있다.
 
 ```jsx
-const sumUp = (a, b, ...num) => {
-    let sum = 0;
-    for (const x of num) {
-        sum += x
-    }
-    return sum;
+function createSquare({ width = 5, length = 2, height = 10 } = {}) {
+  return {
+    width,
+    length,
+    height,
+  };
 }
+
+createSquare(); //{ width: 5, length: 2, height: 10 }
+```
+
+필수로 넘겨야 하는 인자에 대한 에러를 표출할 수도 있다.
+
+```jsx
+const required = (argName) => {
+    throw new Error('required is ' + argName);
+}
+
+function createSquare({ width = required('width'), length = 2, height = 10 } = {}) {
+    return {
+        width,
+        length,
+        height,
+    };
+}
+
+createSquare(); //required is width
+```
+
+<br>
+
+### ✅ Rest Parameters
+
+Rest 파라미터를 사용하면 배열로 사용할 수 있다.
+
+```jsx
+const sumTotal = (...num) => {
+	return num.reduce((acc,cur) => acc + cur);
+}
+
+sumTotal(1,23,4); //28
 ```
 
 <br>
@@ -114,45 +150,28 @@ startGameBtn.addEventListener('click',  function start() {
 
 <br>
 
-### ✅ 콜백함수
-
-```jsx
-function introduce (lastName, firstName, callback) {
-    var fullName = lastName + firstName;
-    
-    callback(fullName);
-}
-
-introduce("홍", "길동", function(name) {
-    console.log(name);
-});
-//홍길동
-```
-
-<br>
-
 ### ✅ 메서드
 
-- 객체에 함수가 저장된 것을 메서드라고 한다.
+객체에 함수가 저장된 것을 메서드라고 한다.
 
-    ```jsx
-    const person = {
-        name: "Max",
-        greet: function greet() {
-            console.log("Hello there!");
-        },
-    };
-    
-    person.greet();
-    ```
+  ```jsx
+  const person = {
+      name: "Max",
+      greet: function greet() {
+          console.log("Hello there!");
+      },
+  };
+  
+  person.greet();
+  ```
 
-  person객체 안에 `greet`라는 메서드가 있다.
+person객체 안에 `greet`라는 메서드가 있다.
 
-    ```jsx
-    startGameBtn.addEventListener("click", startGame);
-    ```
+  ```jsx
+  startGameBtn.addEventListener("click", startGame);
+  ```
 
-  startGameBtn 객체 안에 `addEventListener`라는 메서드가 있다.
+startGameBtn 객체 안에 `addEventListener`라는 메서드가 있다.
 
 - bind()
 
@@ -175,6 +194,50 @@ introduce("홍", "길동", function(name) {
 <br>
 
 ## 함수의 종류
+
+### ✅ 화살표 함수
+
+화살표 함수를 맹목적으로 사용 할 경우 다음과 같은 오류가 생긴다.
+
+```jsx
+const user = {
+    name: "Kiki",
+    getName: ()=> {
+        return this.name;
+    }
+}
+
+user.getName(); //undefined
+```
+
+화살표 함수를 매서드에 사용할 경우 해당 함수 상위의 스코프를 따르기 때문에 this는 user의 상위 즉 window를 바라보게 된다.
+
+또한 화살표 함수 내에서는 call, apply, bind, arguments 등을 사용할 수 없다.
+
+대신 rest를 사용하여 파라미터를 받을 수 있다.
+
+```jsx
+const user = {
+    name: "Kiki",
+    getName: (...rest) => {
+      return rest;
+    },
+};
+console.log(user.getName("Tom")); //['Tom']
+```
+
+또한 화살표 함수로는 생성자 함수를 사용할 수 없다.
+
+```jsx
+const Person = (name, city) => {
+    this.name = name;
+    this.city = city;
+}
+
+const person = new Person('kiki', 'seoul'); //Person is not a constructor
+```
+
+<br>
 
 ### ✅ 순수 함수
 
@@ -324,4 +387,29 @@ function powerOf(x, n) {
 }
 
 powerOf(2, 3);
+```
+
+<br>
+
+### ✅ 콜백함수
+
+addEventListener는 사용자가 정의한 콜백 함수를 넘겨주며 실행시킨다.
+
+```jsx
+someElement.addEventListener('click', function(e) {
+	console.log(someElement + '이 클릭 되었습니다.');
+})
+```
+
+```jsx
+function introduce (lastName, firstName, callback) {
+    var fullName = lastName + firstName;
+    
+    callback(fullName);
+}
+
+introduce("홍", "길동", function(name) {
+    console.log(name);
+});
+//홍길동
 ```
