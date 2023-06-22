@@ -23,11 +23,17 @@ document.querySelector('#input-btn').addEventListener("click", (e) => {
 
 사용자가 입력폼에 스크립트 코드를 입력하면 스크립트 내용이 DOM에 추가된다.
 
-위의 input에 <img src="" onerror=”alert('HELLO')"> 와 같은 코드를 입력하면 창이 뜨는 것을 볼 수 있다.
+위의 input에 `<img src="" onerror=”alert('HELLO')">` 와 같은 코드를 입력하면 창이 뜨는 것을 볼 수 있다.
 
 XSS를 방지하는 방법
 
-1. innerHTML 대신에 contentText를 사용하는 방식으로 구현한다.
+1. innerHTML 대신에 insertAdjacentHTML, insertAdjacentElement, insertAdjacentText를 사용하는 것이 좋다
+    ```jsx
+    const body = document.querySelector("body");
+    body.insertAdjacentHTML("beforeend", "<h1>Hello World</h1>");
+    ```
+
+2. 문자열만 렌더링 할 경우 innerHTML ⇒ innerText ⇒ textContent 가 더 좋다
 2. sanitize-html를 사용하여 악성 스크립트를 제거한다.
 
     ```powershell
