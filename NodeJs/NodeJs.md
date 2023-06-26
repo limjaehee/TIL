@@ -59,7 +59,7 @@ function handleRequest(request, response) {
   //브라우저에 요청이 성공했는지 여부 알림
   response.statusCOde = 200;
   response.write("<h1>Hello World</h1>");
-	//응답 보내기
+  //응답 보내기
   response.end();
 }
 
