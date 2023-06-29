@@ -12,14 +12,14 @@ html 파일은 views 폴더에, script, style 파일은 public 폴더에 모두 
 
 ```
 views
-	ㄴconfirm.html
+  ㄴconfirm.html
   ㄴindex.html
-	ㄴrecommend.html
-	ㄴrestaurants.html
+  ㄴrecommend.html
+  ㄴrestaurants.html
 
 public
-	ㄴscripts
-	ㄴstyles
+  ㄴscripts
+  ㄴstyles
 ```
 
 다음과 같이 작성한다.
@@ -72,7 +72,7 @@ app.listen(3000);
 
 ```
 data
-    ㄴrestaurants.json
+  ㄴrestaurants.json
 ```
 
 전과 마찬가지로 restaurants.json 안에는 빈 배열을 넣는다.
@@ -140,10 +140,10 @@ $ npm install ejs
 
 ```
 views
-	ㄴconfirm.ejs
+  ㄴconfirm.ejs
   ㄴindex.ejs
-	ㄴrecommend.ejs
-	ㄴrestaurants.ejs
+  ㄴrecommend.ejs
+  ㄴrestaurants.ejs
 ```
 
 다음과 같이 작성한다.
@@ -161,7 +161,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.get("/confirm", (req, res) => {
-		//템플릿 렌더링 작업
+    //템플릿 렌더링 작업
     res.render("confirm");
 });
 
@@ -271,8 +271,8 @@ views 폴더 내에 includes 폴더를 생성하고 header.ejs를 추가한다.
 
 ```
 views
-	ㄴincludes
-		ㄴheader.ejs
+  ㄴincludes
+  ㄴheader.ejs
 ```
 
 header.ejs에 아래와 같이 작성한다.

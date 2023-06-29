@@ -33,3 +33,4 @@
 - [NodeJs](NodeJs/NodeJs.md)
 - [ExpressJs](NodeJs/ExpressJs.md)
 - [ExpressJs 템플릿](NodeJs/ExpressJs%20템플릿.md)
+- [ExpressJs 동적 라우팅&오류&쿼리](NodeJs/ExpressJs%20동적%20라우팅&오류&쿼리%20.md)
