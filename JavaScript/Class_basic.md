@@ -110,7 +110,7 @@ user = new User(""); // 이름을 입력해주세요
 
 ### ✅ 클래스 필드
 
-<img src = "../../assets/JavaScript/class_fields.png" width="300px">
+<img src = "../assets/JavaScript/class_fields.png" width="300px">
 
 클래스 필드 문법을 사용하면 어떤 종류의 프로퍼티도 클래스에 추가할 수 있다.
 
@@ -198,7 +198,7 @@ rabbit.hide(); // 흰 토끼 이/가 숨었습니다!
 
 키워드 extends는 프로토타입을 기반으로 동작한다. extends는 Rabbit.prototype.[[prototype]]을 Animal.prototype으로 설정한다.
 
-<img src = "../../assets/JavaScript/class_prototype_example.png" width="300px">
+<img src = "../assets/JavaScript/class_prototype_example.png" width="300px">
 
 console.log(Rabbit.prototype)의 결과
 

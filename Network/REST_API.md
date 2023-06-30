@@ -1,4 +1,4 @@
-# WEB API
+# REST API
 
 ## DOM Event
 

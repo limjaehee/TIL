@@ -157,7 +157,7 @@ console.log(student.toString()) //[object Object]
 1. student라는 객체에서 toString() 메서드를 찾는다. 이때 찾으면 메소드를 호출한다.
 2. student에서 메서드를 찾지 못하므로 student 객체의 prototype이 가리키는 링크를 따라가 Object.prototype에서 찾는다.
 
-<img src="../../assets/JavaScript/prototype_example.png" width="300">
+<img src="../assets/JavaScript/prototype_example.png" width="300">
 
 <br>
 

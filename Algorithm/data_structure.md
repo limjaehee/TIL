@@ -2,7 +2,7 @@
 
 ## 단방향 연결 리스트
 
-<img src="../../assets/JavaScript/singly_linked_lists.png" width="400">
+<img src="../assets/JavaScript/singly_linked_lists.png" width="400">
 
 단방향 연결 리스트는 다음과 같은 특징을 가지고 있다
 

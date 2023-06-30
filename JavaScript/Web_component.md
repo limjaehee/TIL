@@ -85,7 +85,7 @@ Uncaught DOMException: Failed to construct 'CustomElement': The result must not 
 
 이는 appendChild의 잘못된 위치 문제인데 이를 이해하기 위해서 웹 컴포넌트 라이프사이클을 알아야 한다.
 
-<img src="../../assets/JavaScript/web_component_lifecycle.png" width="600">
+<img src="../assets/JavaScript/web_component_lifecycle.png" width="600">
 
 위를 보면 요소가 생성되는 순간과 요소가 DOM에 첨부되는 순간이 다르다는 것을 알 수 있다.
 
@@ -230,7 +230,7 @@ attachShadow 모드를 open으로 정하고 (외부의 접근 허용에 관한 �
 
 아래 appendChild, removeChild 앞에 shadowRoot를 적어 경로를 다시 설정해준다.
 
-<img src="../../assets/JavaScript/shadow_dom_component.png" width="450">
+<img src="../assets/JavaScript/shadow_dom_component.png" width="450">
 
 코드를 입력한 뒤 새로고침 하면 위와 같이 shadow DOM을 볼 수 있다.
 
@@ -338,7 +338,7 @@ class Tooltip extends HTMLElement {
 
 참고로 컴포넌트 내부 외부에서 같은 스타일을 적용할 경우 내부 > 외부 순으로 오버라이딩 된다.
 
-<img src="../../assets/JavaScript/slot_style_overriding.png" width="350">
+<img src="../assets/JavaScript/slot_style_overriding.png" width="350">
 
 <br><br>
 

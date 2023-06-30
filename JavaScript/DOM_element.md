@@ -2,7 +2,7 @@
 브라우저에 의해 JavaScript에 노출되는 API의 일부이다.
 
 ## Traversing the Dom
-![Untitled](../../assets/JavaScript/traversing_the_DOM.png)
+![Untitled](../assets/JavaScript/traversing_the_DOM.png)
 ```html
 <header>hello</header>
 <div>

@@ -5,8 +5,8 @@
 ### 버블 정렬
 
 <div style="display: flex; gap: 10px;">
-    <img src="../../assets/JavaScript/bubble_srot_time.gif" width="300">
-    <img src="../../assets/JavaScript/bubble_sort_step.png" width="200">
+    <img src="../assets/JavaScript/bubble_srot_time.gif" width="300">
+    <img src="../assets/JavaScript/bubble_sort_step.png" width="200">
 </div>
 
 이름의 유래는 정렬 과정에서 원소의 이동이 거품이 수면으로 올라오는 듯한 모습을 보이기 때문에 지어졌다.

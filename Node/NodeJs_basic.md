@@ -105,7 +105,7 @@ function handleRequest(request, response) {
 }
 ```
 
-<img src="../assets/NodeJs/node_set_header.png" width="400">
+<img src="../assets/Node/node_set_header.png" width="400">
 
 두 번째 인자로 text/html 대신 text/plain을 적으면 HTML로 렌더링 되지 않는다.
 

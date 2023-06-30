@@ -51,14 +51,14 @@ setTimeout같은 브라우저 api를 만나게되면 **무조건 브라우저에
 
 동기와 비동기를 카페에서 음료를 주문할 때로 예시를 들어보면 다음과 같다.
 
-<img src="../../assets/JavaScript/async_cafe1.png" width="500">
+<img src="../assets/JavaScript/async_cafe1.png" width="500">
 
 1. 카페에 들어간다
 2. 앞사람의 음료가 나올 때까지 순서를 기다린다.
 3. 음료를 주문하고 나올 때까지 기다린다.
 4. 자리를 찾아서  앉는다
 
-<img src="../../assets/JavaScript/async_cafe2.png" width="500">
+<img src="../assets/JavaScript/async_cafe2.png" width="500">
 
 1. 카페에 들어간다
 2. 음료를 주문하고 진동벨을 받는다

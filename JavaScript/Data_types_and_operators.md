@@ -115,7 +115,7 @@ console.log(id1 === id2) //false
 - 후위 연산자(n++, n--) : 해당 문장을 실행하고 증감
 
 
-<img src="../../assets/JavaScript/증감연산자_전위_후위형.png" width="450">
+<img src="../assets/JavaScript/증감연산자_전위_후위형.png" width="450">
 
 ```jsx
 let num = 10;

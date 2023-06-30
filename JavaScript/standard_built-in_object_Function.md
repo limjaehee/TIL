@@ -12,7 +12,7 @@ console.dir(startGame);
 
 함수는 객체이다.<br>위와 같이 콘솔에 함수를 찍으면 아래처럼 키와 값이 쌍으로 되어있는 객체가 나온다. 이는 해당 함수에 포함되어있는 프로퍼티를 나타낸 것이다.
 
- <img src = "../../assets/JavaScript/functionIsObject.jpg" width="300px">
+ <img src = "../assets/JavaScript/functionIsObject.jpg" width="300px">
 
 <br>
 <br>

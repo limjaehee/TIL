@@ -83,7 +83,7 @@ function logAtLeast5(n) {
 }
 ```
 
-![Untitled](../../assets/JavaScript/comparingBigO.png)
+![Untitled](../assets/JavaScript/comparingBigO.png)
 <hr>
 
 ### 공간복잡도

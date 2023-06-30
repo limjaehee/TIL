@@ -1,6 +1,6 @@
 # 가비지 콜렉션, 컬렉터(Garbage Collection)
 
-![Untitled](../../assets/JavaScript/garbage_collection.png)
+![Untitled](../assets/JavaScript/garbage_collection.png)
 
 - 사용되지 않은 객체(참조되지 않은 객체)에 대한 힙 메모리를 주기적으로 확인하여 제거한다. (참조는 변수에 저장된 주소이다)
 - 메모리 누수로 더이상 동작하지 않는 객체에 참조된 부분이 있다면 가비자 컬렉션을 진행할 수 없다.
