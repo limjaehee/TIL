@@ -69,3 +69,4 @@
 
 ### DB
 - [SQL과 NoSQL의 차이](DB/SQL_and_NoSQL.md)
+- [MySQL 설치 및 작성 방법](DB/MySQL.md)
