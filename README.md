@@ -68,3 +68,4 @@
 - [5. ExpressJs 오류 & 쿼리](Node/ExpressJs_error_and_query.md)
 
 ### DB
+- [SQL과 NoSQL의 차이](DB/SQL_and_NoSQL.md)
