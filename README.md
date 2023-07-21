@@ -53,6 +53,9 @@
 - [[표현식] New](JavaScript/Expression_New.md)
 - [[정규식] 정규식 기초](JavaScript/regular_expression_basic.md)
 
+### TypeScript
+- [타입스크립트 설치 및 설정](TypeScript/typescript_setting.md)
+
 ### Algorithm
   - [1. BigO란?](Algorithm/BigO.md)
   - [2. 검색 알고리즘](Algorithm/Search_algorithm.md)
