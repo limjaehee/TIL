@@ -104,3 +104,97 @@ $ tsc -v
     ```powershell
     $ tsc --watch
     ```
+
+<br>
+
+## tsconfig.json 설정
+
+### ✅ 컴파일 제외 & 포함
+
+컴파일 제외를 하고 싶으면 tsconfig.json에서 다음을 입력해준다.
+
+node_modules는 원래 자동 제외되는데 exclude를 사용할 경우 따로 같이 적어줘야 한다.
+
+```json
+{
+   "exclude": [
+      "node_modules", //exclude를 사용할 경우 꼭 필요
+      "analytics.ts", //제외할 파일명
+      "*.dev.ts" //파일명 뒤에 dev가 들어간 모든 파일
+   ]
+}
+```
+
+컴파일 과정에 포함 시킬 파일도 정할 수 있다.
+
+단 여기에 적힌 파일만 컴파일 시키므로 모든 컴파일하고자 하는 항목을 포함 시켜야 한다.
+
+```json
+{
+   "include": ["app.ts", "analytics.ts"]
+}
+```
+
+### ✅ 컴파일 폴더 설정
+
+컴파일 된 js파일을 dist 폴더에 모아 놓을 수 있다.
+
+```json
+{
+   "compilerOptions": {
+      "outDir": "./dist"
+   }
+}
+```
+
+rootDir에 폴더 명을 입력해주면 다른 폴더의 ts스크립트가 dist폴더에 컴파일 되어 들어가는 것을 방지할 수 있다.
+
+```json
+{
+   "compilerOptions": {
+      "rootDir": "./src"
+   }
+}
+```
+
+### ✅ 에러 관련 설정
+
+에러가 생겼을 시 JS에 컴파일 되지 않음
+
+```json
+{
+    "compilerOptions": {
+      "noEmitOnError": true
+    }
+}
+```
+
+사용하지 않는 매개변수에 에러를 표시
+
+```json
+{
+   "compilerOptions": {
+     "noUnusedParameters": true
+   }
+}
+```
+
+함수 내 사용하지 않는 변수에 에러를 표시
+
+```json
+{
+   "compilerOptions": {
+      "noUnusedLocals": true
+   }
+}
+```
+
+함수 내 반환하는 경우가 하나라도 있다면 모든 경우에 반환하도록 해야 함
+
+```json
+{
+   "compilerOptions": {
+      "noImplicitReturns": true
+   }
+}
+```
