@@ -57,6 +57,7 @@
 - [타입스크립트 설치 및 설정](TypeScript/typescript_setting.md)
 - [타입스크립트 기본 타입](TypeScript/typescript_basic_type.md)
 - [타입스크립트 함수](TypeScript/typescript_function.md)
+- [타입스크립트 클래스](TypeScript/typescript_class.md)
 
 ### Algorithm
   - [1. BigO란?](Algorithm/BigO.md)
