@@ -152,3 +152,215 @@ class Department {
   constructor(private id: number, public name: string) {}
 }
 ```
+<br>
+
+### 읽기전용 속성 readonly
+
+readonly는 특정 속성이 초기화되고 나면 이후에는 변경되어선 안된다는 특징이 있다
+
+```tsx
+class Department {
+  // private readonly id: number;
+
+  constructor(private readonly id: number, public name: string) {}
+}
+```
+<br>
+
+### 클래스 확장과 protected
+
+private는 클래스 외부와 확장된 클래스 내에서도 접근할 수 없는 반면
+
+protected는 클래스 외부에서는 접근 할 수 없지만 확장된 클래스 내에서는 접근이 가능하다.
+
+```tsx
+class Department {
+  protected employees: string[] = [];
+
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
+
+  printEmployeeInformation() {
+    console.log(this.employees);
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: number) {
+    super(id, "Accounting");
+  }
+
+  addEmployee(name: string): void {
+    if (name === "Max") return;
+
+    this.employees.push(name);
+  }
+}
+
+const accounting = new AccountingDepartment(6, []);
+
+accounting.addEmployee("Tom");
+accounting.printEmployeeInformation();
+```
+<br>
+
+### Get & Set
+
+게터와 세터는 속성을 읽거나 설정하려 할 때 유용한 방법이다.
+
+```tsx
+class AccountingDepartment extends Department {
+  private lastReport: string;
+
+  get mostRecentReport() {
+    if (!this.lastReport) throw new Error("no content");
+    return this.lastReport;
+  }
+
+  set mostRecentReport(value: string) {
+    if (!value) throw new Error("not valid value!");
+    this.addReport(value);
+  }
+
+  constructor(id: number, private reports: string[]) {
+    super(id, "Accounting");
+    this.lastReport = reports[0];
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+    this.lastReport = text;
+  }
+}
+
+const accounting = new AccountingDepartment(6, []);
+
+accounting.mostRecentReport = "Year End report";
+accounting.addReport("Rosa");
+
+console.log(accounting.mostRecentReport); //Rosa
+
+accounting.printReports(); //['Year End report', 'Rosa']
+```
+<br>
+
+### 정적 메서드 & 속성
+
+정적 메서드는 새 키워드 없이 직접 클래스에서 호출하는 것이다.
+
+```tsx
+Math.pow(7, -2);
+Math.random();
+```
+
+정적 메서드는 메소드 앞에 `static`을 붙여 사용한다.
+
+예) 클래스 내에서의 정적 메서드
+
+```tsx
+class Department {
+  static createEmployee(name: string) {
+    return { name: name };
+  }
+}
+
+const employee1 = Department.createEmployee("Max");
+console.log(employee1); //{name: 'Max'}
+```
+
+예) 클래스 내에서의 정적 속성
+
+```tsx
+class Department {
+  static fiscalYear = 2023;
+}
+
+console.log(Department.fiscalYear); //2023
+```
+
+여기서 중요한 점은 클래스 내부에서 this로 정적 속성과 메소드에 접근할 수 없다는 것이다.
+
+클래스 내에서 접근하기 위해서는 Department.fiscalYear 처럼 클래스 이름을 적어주어야 한다.
+
+```tsx
+class Department {
+  static fiscalYear = 2023;
+
+  constructor() {
+    console.log(this.fiscalYear); //X
+    console.log(Department.fiscalYear); //O
+  }
+
+	static printYear() {
+    console.log(this.fiscalYear); //O
+    console.log(Department2.fiscalYear); //O
+  }
+}
+```
+<br>
+
+### 추상 클래스
+
+추상 클래스는 일종의 껍데기로서 기능을 제외한 부분을 구현하는 것이며
+
+class 앞에 `abstract`를 표기하며 추상 메서드에도 abstract를 이름 앞에 표기한다.
+
+추상 클래스는 일반 클래스와 달리 인스턴스를 생성하지 않으며 생성하려는 경우 오류 메시지를 띄운다.
+
+```tsx
+abstract class Department {
+  constructor(protected readonly id: number, public name: string) {}
+
+  abstract describe(this: Department): void;
+}
+
+// error
+let Department = new Department();
+```
+
+추상 메소드는 정의만 있을 뿐 몸체가 구현되어 있지는 않다.
+
+따라서 abstract 키워드가 붙으면 상속받은 클래스에서 메소드를 필수로 구현해야 한다.
+
+```tsx
+class AccountingDepartment extends Department {
+  constructor(id: number) {
+    super(id, "Accounting");
+  }
+
+  describe() {
+    console.log("accounting id:" + this.id);
+  }
+}
+
+const accounting = new AccountingDepartment(6);
+accounting.describe(); //accounting id:6
+```
+<br>
+
+### 싱글턴
+
+싱글턴 패턴은 인스턴스가 오직 하나만 생성되어야 하는 케이스에 사용하는 패턴이다.
+
+`private` 접근 제어자를 통해 constructor() 앞에 붙이면 new 키워드를 통해 인스턴스를 생성하지 못하도록 제한할 수 있다.
+
+```tsx
+class SingleInstance {
+  private static instance: SingleInstance;
+
+  private constructor(protected readonly id: number, public name: string) {}
+
+  static getInstance() {
+    if (!SingleInstance.instance) {
+      SingleInstance.instance = new SingleInstance(1, "single");
+    }
+
+    return SingleInstance.instance;
+  }
+}
+
+const singleInstance = SingleInstance.getInstance();
+
+console.log(singleInstance); //SingleInstance {id: 1, name: 'single'}
+```
