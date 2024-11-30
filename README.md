@@ -52,6 +52,7 @@
 - [[클래스] 프로퍼티와 메서드](JavaScript/Class_properties_and_methods.md)
 - [[표현식] New](JavaScript/Expression_New.md)
 - [[정규식] 정규식 기초](JavaScript/regular_expression_basic.md)
+- [[실행 컨텍스트] Variable Environment, Lexical Environment 차이](JavaScript/Variable_Environment_Lexical_Environment.md)
 
 ### TypeScript
 - [타입스크립트 설치 및 설정](TypeScript/typescript_setting.md)
